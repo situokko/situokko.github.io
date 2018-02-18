@@ -1,5 +1,9 @@
 # Powershell "spells"
 
+## New environment setup
+1. `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned` (as admin)
+1. `echo $null >> $profile`
+
 ## Load URL contents (wget/curl)
 ```powershell
 (Invoke-webrequest -URI "https://cs.chromium.org/codesearch/f/chromium/src/net/http/transport_security_state_static.json?cl=797a3802e77
