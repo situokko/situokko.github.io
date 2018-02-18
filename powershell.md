@@ -1,1 +1,23 @@
-abc
+# Powershell "spells"
+
+## Load URL contents (wget/curl)
+```powershell
+(Invoke-webrequest -URI "https://cs.chromium.org/codesearch/f/chromium/src/net/http/transport_security_state_static.json?cl=797a3802e77
+7fb42a24529261a1af57a8f899e12").Content
+```
+
+## Regex return captured group only
+```powershell
+Get-Content .\sts.json | Select-String -Pattern " `"([a-z0-9-.]*.fi)`"" | % { $_.Matches.Value }
+```
+
+## Invoke command dynamically with custom parameters
+```powershell
+function invokeWithArgs($cmd) {
+    $argString = [system.String]::Join(" ", $args)
+    $sb = [scriptblock]::Create("$cmd $argString")
+    Invoke-Command $sb
+}
+
+invokeWithArgs "dir -s" -filter "*.txt" -name
+```
