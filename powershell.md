@@ -25,3 +25,8 @@ function invokeWithArgs($cmd) {
 
 invokeWithArgs "dir -s" -filter "*.txt" -name
 ```
+
+## Grep IPs from IIS access-log
+```powershell
+    grep XXX.*Linux .\u_ex180508.log | Select-String -Pattern '10\.18\.*?\s' -AllMatches | % { $_.Matches.Value }  | Group
+```
